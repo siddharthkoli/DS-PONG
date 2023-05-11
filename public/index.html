@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <style>
+            @import url(style.css);
+
+        </style>
+        <script src="/socket.io/socket.io.js"></script>
+        <title>Pong!</title>
+        <link rel="shortcut icon" href="img/pong.png">
+    </head>
+    <body>
+        <h1 style="font-size:5em;display: block;text-align:center;margin-bottom:3px">Pong</h1>
+        <h2 style="display: block;text-align:center;">The Online Mutiplayer Game</h2>
+        <a href="about.html#howTo" style="display: block;text-align:center;cursor:pointer;text-decoration: none;color:white" >How to play?</a>
+        <br><br>
+
+<div id="lobby" style="display: none">
+        <h1 style="margin:auto;text-align:center;font-size:5em">Lobby</h1>
+        <br><br>
+        <h2 id ="gameid" style="margin:auto;text-align:center;font-size: 3em" >Game ID : </h2>
+        <div id="loader" class="loader"></div>
+        <br>
+        <h2 id="player_wait_banner" style="display: none;margin:auto;text-align: center" ></h2>
+        <br><br>
+        <div id = "player_table">
+        </div>
+
+<br><br>
+</div>
+
+<div id="game" style="display: block">
+        <svg id="canvas" width="600" height="600"></svg>
+        <h1 id="game_state_banner" style="text-align:center"> </h1>
+        <h3 id="player_turn" style="text-align:center"></h3>
+
+        <div id="loader2" class="loader2"></div>
+        
+        <button class="startbutton" type="button" id="start">Start</button>
+        <br><br>
+</div>
+       
+<div id="options" style="display: block">
+                <h1 onclick="spinIcon()" style="text-align:center;cursor:pointer;">Options &nbsp<i id="arrow" class="down"></i></h2>     
+            <div id="settings" style="display: none">
+            <table>      
+                <tr>
+                        <td colspan="3" style="text-align: center;font-weight: bold;background-color: white;padding: 20px;"> <text style="color:black;">Gameplay Settings</text>></td>
+                </tr>
+
+                <tr>
+                        <td><label for="ball_speed">Difficulty</label></td>
+                        <td> <input type="text" id="ball_speed"></td>
+                </tr>
+                <tr>
+                        <td><label for="player_side">Player Side</label></td>
+                        <td style="display:block;"> 
+                        
+                        <div style="display:inline">
+                                <input type="radio" name="player_side" id="left_side" value="left" checked> Left
+                                        
+                        </div>
+                        <div style="display:inline"> 
+                                <input type="radio" name="player_side" id="right_side" value="right"> Right
+                        </div>
+                </td>
+                </tr>
+
+                <tr>
+                        <td><label for="game_point">Game Point</label></td>
+                        <td> <input type="text" id="game_point"></td>
+                </tr>
+
+                <tr>
+                        <td colspan="3" style="text-align: center;font-weight: bold;background-color: white;padding: 20px;"> <text style="color:black;">Visual Settings</text>></td>
+                </tr>
+
+                <tr>
+                        <td><label for="paddle_height">Paddle Height</label></td>
+                        <td> <input type="text" id="paddle_height"></td>
+                        
+                </tr>
+
+                <tr>
+                        <td><label for="theight">Table Height</label></td>
+                        <td> <input type="text" id="theight"></td>
+                </tr>
+                <tr>
+                        <td><label for="twidth">Table Width</label></td>
+                        <td> <input type="text" id="twidth"></td>
+                </tr>
+
+                <tr>
+                        <td><label for="dash_gap">Center Line Dash Gap</label></td>
+                        <td> <input type="text" id="dash_gap"></td>
+                </tr>
+                <tr>
+                        <td><label for="padding">Padding Around the Play Area</label></td>
+                        <td> <input type="text" id="padding"></td>
+                </tr>
+
+                <tr>
+                        <td colspan="3" style="text-align: center;font-weight: bold;background-color: white;padding: 20px;"> <text style="color:black;">Other Settings</text>></td>
+                </tr>
+                <tr>
+                        <td><label for="frame_rate">Frame Rate</label></td>
+                        <td> <input type="text" id="frame_rate"></td>
+                </tr>
+                
+                
+                
+            </table>
+
+            <br>
+            <button class="startbutton" type="button" id="update" >Update Game</button>
+        </div>
+    </div>
+
+        <br><br><br>
+        <hr>
+        <br><br>
+    <div id="singleplayer" style="display: none">
+
+            <h1 style="text-align:center">
+                Single Player
+            </h1>
+            <button class="startbutton" id="singleplayer_button">Switch to Single Player</button>
+            </div>
+
+    <div id="multiplayer" style="display: block">
+    <h1 style="text-align:center">
+        Multiplayer
+    </h1>
+    <button class="startbutton" id="creategame">Create Game</button>
+    <br><br><br>
+    <input id="join_game_id" type="text" placeholder="Please enter Game ID.." style="color:white;border:1px solid white;;text-align:center;display:block;width:40%;margin:auto;">
+    <br><br>
+    <button class="startbutton" id="joingame">Join Game</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    
+    </body>
+    <script src="custom.js"></script>
+    <script src="svgelement.js"></script>
+    <script src="observable.js"></script>
+    <script src="pong.js"></script>
+</html>
